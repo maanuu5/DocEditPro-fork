@@ -118,16 +118,16 @@ export default function PrivacyScannerPage() {
                   <div className="space-y-6">
                     {/* Status Summary Banner */}
                     <div
-                      className={`p-4 rounded-md border flex items-start space-x-3 ${
+                      className={`p-4 rounded-xl border flex items-start space-x-3 ${
                         report.issuesFoundCount > 0
-                          ? "bg-amber-500/10 border-amber-500/30 text-amber-300"
-                          : "bg-emerald-500/10 border-emerald-500/30 text-emerald-300"
+                          ? "bg-amber-50 border-amber-200 text-amber-900"
+                          : "bg-emerald-50 border-emerald-200 text-emerald-900"
                       }`}
                     >
                       {report.issuesFoundCount > 0 ? (
-                        <ShieldAlert className="h-6 w-6 text-amber-400 flex-shrink-0 mt-0.5" />
+                        <ShieldAlert className="h-6 w-6 text-amber-600 flex-shrink-0 mt-0.5" />
                       ) : (
-                        <CheckCircle className="h-6 w-6 text-emerald-400 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="h-6 w-6 text-emerald-600 flex-shrink-0 mt-0.5" />
                       )}
                       <div>
                         <h4 className="font-semibold text-sm">

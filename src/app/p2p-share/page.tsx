@@ -197,11 +197,11 @@ export default function P2pSharePage() {
 
         {/* Received File Card */}
         {receivedFile && (
-          <div className="p-6 rounded-md bg-emerald-500/10 border border-emerald-500/30 space-y-4">
+          <div className="p-6 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <h4 className="font-semibold text-sm text-emerald-300">File Received via P2P!</h4>
-                <p className="text-xs text-emerald-400 mt-0.5">{receivedFile.name}</p>
+                <h4 className="font-semibold text-sm text-emerald-950">File Received via P2P!</h4>
+                <p className="text-xs text-emerald-700 mt-0.5">{receivedFile.name}</p>
               </div>
               <Button
                 variant="primary"

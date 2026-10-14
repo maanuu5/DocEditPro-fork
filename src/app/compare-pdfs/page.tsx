@@ -212,13 +212,13 @@ export default function ComparePdfsPage() {
                       );
                     } else if (seg.op === 1) {
                       return (
-                        <span key={i} className="bg-emerald-500/20 text-emerald-300 rounded px-0.5">
+                        <span key={i} className="bg-emerald-100 text-emerald-800 rounded px-1 py-0.5 font-medium">
                           {seg.text}
                         </span>
                       );
                     } else {
                       return (
-                        <span key={i} className="bg-rose-500/20 text-rose-300 line-through rounded px-0.5">
+                        <span key={i} className="bg-rose-100 text-rose-800 line-through rounded px-1 py-0.5 font-medium">
                           {seg.text}
                         </span>
                       );
@@ -229,7 +229,7 @@ export default function ComparePdfsPage() {
             ) : (
               <div className="grid grid-cols-2 gap-2">
                 <Card className="p-0 overflow-hidden">
-                  <div className="px-3 py-2 border-b border-[var(--border)] text-xs font-semibold text-rose-400">
+                  <div className="px-3 py-2 border-b border-[var(--border)] text-xs font-semibold text-rose-700 bg-rose-50/50">
                     A – {fileA?.name}
                   </div>
                   <div
@@ -241,7 +241,7 @@ export default function ComparePdfsPage() {
                   </div>
                 </Card>
                 <Card className="p-0 overflow-hidden">
-                  <div className="px-3 py-2 border-b border-[var(--border)] text-xs font-semibold text-emerald-400">
+                  <div className="px-3 py-2 border-b border-[var(--border)] text-xs font-semibold text-emerald-700 bg-emerald-50/50">
                     B – {fileB?.name}
                   </div>
                   <div

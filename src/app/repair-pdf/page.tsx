@@ -150,18 +150,18 @@ export default function RepairPdfPage() {
         ) : result ? (
           <Card className="p-6 space-y-5">
             {/* Result */}
-            <div className={`flex items-start gap-3 p-4 rounded-[var(--radius-md)] border ${
+            <div className={`flex items-start gap-3 p-4 rounded-xl border ${
               result.success
-                ? "border-emerald-500/30 bg-emerald-500/5"
-                : "border-amber-500/30 bg-amber-500/5"
+                ? "border-emerald-200 bg-emerald-50"
+                : "border-amber-200 bg-amber-50"
             }`}>
               {result.success ? (
-                <CheckCircle2 className="h-5 w-5 text-emerald-400 mt-0.5 shrink-0" />
+                <CheckCircle2 className="h-5 w-5 text-emerald-600 mt-0.5 shrink-0" />
               ) : (
-                <AlertCircle className="h-5 w-5 text-amber-400 mt-0.5 shrink-0" />
+                <AlertCircle className="h-5 w-5 text-amber-600 mt-0.5 shrink-0" />
               )}
               <div className="space-y-1">
-                <p className={`font-semibold text-sm ${result.success ? "text-emerald-300" : "text-amber-300"}`}>
+                <p className={`font-semibold text-sm ${result.success ? "text-emerald-900" : "text-amber-900"}`}>
                   {result.success ? "Repair Successful" : "Partial Recovery"}
                 </p>
                 <p className="text-xs text-[var(--muted-foreground)]">

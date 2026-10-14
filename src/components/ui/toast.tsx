@@ -53,7 +53,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
           <div
             key={t.id}
             className={cn(
-              "relative flex items-start space-x-3 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--surface-elevated)] p-4 shadow-xl transition-all animate-in slide-in-from-bottom-5",
+              "relative flex items-start space-x-3 rounded-2xl border border-black/10 bg-white/95 backdrop-blur-xl p-4 shadow-[0_12px_36px_rgba(0,0,0,0.12)] transition-all animate-in slide-in-from-bottom-5",
               t.type === 'success' && "border-l-4 border-l-[var(--success)]",
               t.type === 'warning' && "border-l-4 border-l-[var(--warning)]",
               t.type === 'danger' && "border-l-4 border-l-[var(--danger)]",
@@ -61,10 +61,10 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
             )}
           >
             <div className="mt-0.5 shrink-0">
-              {t.type === 'success' && <CheckCircle2 className="h-5 w-5 text-emerald-400" />}
-              {t.type === 'warning' && <AlertTriangle className="h-5 w-5 text-amber-400" />}
-              {t.type === 'danger' && <XCircle className="h-5 w-5 text-rose-400" />}
-              {t.type === 'info' && <Info className="h-5 w-5 text-blue-400" />}
+              {t.type === 'success' && <CheckCircle2 className="h-5 w-5 text-emerald-600" />}
+              {t.type === 'warning' && <AlertTriangle className="h-5 w-5 text-amber-600" />}
+              {t.type === 'danger' && <XCircle className="h-5 w-5 text-rose-600" />}
+              {t.type === 'info' && <Info className="h-5 w-5 text-blue-600" />}
             </div>
             <div className="flex-1 space-y-0.5 pr-2">
               {t.title && (

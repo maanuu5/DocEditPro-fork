@@ -137,8 +137,8 @@ export default function AudioToPdfPage() {
           </div>
 
           {!isSupported && (
-            <div className="p-4 rounded-md bg-amber-500/10 border border-amber-500/30 text-amber-300 flex items-center space-x-3 text-xs">
-              <AlertCircle className="h-5 w-5 flex-shrink-0" />
+            <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 flex items-center space-x-3 text-xs">
+              <AlertCircle className="h-5 w-5 flex-shrink-0 text-amber-600" />
               <span>
                 Web Speech Recognition API is not supported in this browser. Please use Google Chrome, Edge, or Safari to use microphone dictation.
               </span>

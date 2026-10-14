@@ -114,11 +114,11 @@ export default function RedactPdfPage() {
               </div>
 
               {/* Security Banner */}
-              <div className="rounded-md bg-amber-500/10 border border-amber-500/30 p-4 flex items-start space-x-3 text-xs text-amber-300">
-                <ShieldAlert className="h-5 w-5 flex-shrink-0 text-amber-400 mt-0.5" />
+              <div className="rounded-xl bg-amber-50 border border-amber-200 p-4 flex items-start space-x-3 text-xs text-amber-900">
+                <ShieldAlert className="h-5 w-5 flex-shrink-0 text-amber-600 mt-0.5" />
                 <div>
-                  <p className="font-semibold text-amber-200">Permanent Pixel Destruction</p>
-                  <p className="mt-1">
+                  <p className="font-semibold text-amber-950">Permanent Pixel Destruction</p>
+                  <p className="mt-1 text-amber-800">
                     Unlike standard PDF annotations, DocEditPro permanently flattens and burns pixels into the underlying image stream, ensuring sensitive data cannot be uncovered by selecting or copying text.
                   </p>
                 </div>

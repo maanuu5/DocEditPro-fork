@@ -1441,6 +1441,12 @@ export function InteractivePdfEditor({
       {/* Top Application Ribbon */}
       <header className="flex items-center justify-between px-4 py-2 border-b border-[var(--border)] bg-[var(--surface)] text-xs z-30 shrink-0">
         <div className="flex items-center space-x-3">
+          {/* macOS window traffic lights */}
+          <div className="flex items-center gap-1.5 mr-1" aria-hidden="true">
+            <span className="w-3 h-3 rounded-full bg-[#ff5f57] border border-[#e0443e] inline-block shadow-xs" />
+            <span className="w-3 h-3 rounded-full bg-[#febc2e] border border-[#d89e24] inline-block shadow-xs" />
+            <span className="w-3 h-3 rounded-full bg-[#28c840] border border-[#1aab29] inline-block shadow-xs" />
+          </div>
           {onClose && (
             <Button variant="ghost" size="sm" onClick={onClose} className="h-8 px-2 text-xs">
               <ChevronLeft className="h-4 w-4 mr-1" /> Back
@@ -1603,7 +1609,7 @@ export function InteractivePdfEditor({
             variant={activeTool === "whiteout" ? "primary" : "ghost"}
             size="sm"
             onClick={() => setActiveTool("whiteout")}
-            className="h-8 text-xs px-2.5 flex items-center space-x-1 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/20"
+            className="h-8 text-xs px-2.5 flex items-center space-x-1 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 rounded-lg"
             title="Erase / Whiteout existing content"
           >
             <Eraser className="h-3.5 w-3.5" />
@@ -1697,9 +1703,9 @@ export function InteractivePdfEditor({
           <div className="flex items-center space-x-1.5 border-r border-[var(--border)] pr-3">
             <button
               onClick={() => setShowTextHighlights((v) => !v)}
-              className={`p-1.5 rounded flex items-center space-x-1 text-[11px] ${
+              className={`p-1.5 rounded-md flex items-center space-x-1 text-[11px] ${
                 showTextHighlights
-                  ? "bg-cyan-500/15 text-cyan-300"
+                  ? "bg-blue-50 text-blue-700 font-medium border border-blue-200"
                   : "text-[var(--muted-foreground)] hover:text-[var(--foreground)]"
               }`}
               title="Toggle Text Highlight Boxes"
@@ -1717,7 +1723,7 @@ export function InteractivePdfEditor({
                 variant="ghost"
                 size="sm"
                 onClick={handleConvertAllPageTextToEditable}
-                className="h-7 px-2 text-[11px] text-cyan-300 hover:bg-cyan-500/15 flex items-center space-x-1"
+                className="h-7 px-2 text-[11px] text-blue-700 hover:bg-blue-50 flex items-center space-x-1"
                 title="Convert all text blocks on this page to editable boxes"
               >
                 <Wand2 className="h-3 w-3" />
@@ -1731,10 +1737,10 @@ export function InteractivePdfEditor({
                 size="sm"
                 onClick={handleRunOcrOnPage}
                 disabled={isOcrRunning}
-                className="h-7 px-2 text-[11px] text-amber-300 hover:bg-amber-500/15 flex items-center space-x-1"
+                className="h-7 px-2 text-[11px] text-amber-700 hover:bg-amber-50 flex items-center space-x-1"
                 title="Run OCR to detect text from scanned image"
               >
-                <Sparkles className="h-3 w-3 text-amber-400" />
+                <Sparkles className="h-3 w-3 text-amber-500" />
                 <span>{isOcrRunning ? `OCR ${ocrProgress}%` : "OCR Text"}</span>
               </Button>
             )}
@@ -2039,7 +2045,7 @@ export function InteractivePdfEditor({
                       )}
 
                       {pageDetectedCount > 0 && pageElemCount === 0 && (
-                        <span className="absolute bottom-1 left-1 bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-[8px] px-1 py-0.2 rounded font-mono">
+                        <span className="absolute bottom-1 left-1 bg-blue-50 border border-blue-200 text-blue-700 text-[8px] px-1 py-0.2 rounded font-mono">
                           {pageDetectedCount} txt
                         </span>
                       )}
@@ -2098,8 +2104,8 @@ export function InteractivePdfEditor({
           </div>
         </aside>
 
-        {/* Center Canvas Workspace */}
-        <main className="flex-1 bg-[#121212] overflow-auto flex items-center justify-center p-6 md:p-12 relative select-none">
+        {/* Center Canvas Workspace - macOS Desk Preview */}
+        <main className="flex-1 bg-[#e8e8ed] overflow-auto flex items-center justify-center p-6 md:p-12 relative select-none">
           {isLoadingPdf ? (
             <div className="text-center space-y-3">
               <RefreshCw className="h-8 w-8 text-[var(--accent)] animate-spin mx-auto" />
@@ -2112,7 +2118,7 @@ export function InteractivePdfEditor({
                 transformOrigin: "center center",
                 transition: "transform 150ms cubic-bezier(0.2, 0, 0, 1)",
               }}
-              className="relative shadow-2xl rounded-sm transition-all"
+              className="relative shadow-[0_16px_48px_rgba(0,0,0,0.12)] border border-black/10 rounded-sm transition-all"
             >
               {/* Document Page Canvas Container */}
               <div
@@ -2124,7 +2130,7 @@ export function InteractivePdfEditor({
                 onMouseDown={handlePageMouseDown}
                 onMouseMove={handlePageMouseMove}
                 onMouseUp={handlePageMouseUp}
-                className={`relative bg-white shadow-2xl overflow-hidden cursor-${
+                className={`relative bg-white shadow-[0_4px_24px_rgba(0,0,0,0.08)] overflow-hidden cursor-${
                   activeTool === "select"
                     ? "default"
                     : activeTool === "text"
@@ -2455,11 +2461,11 @@ export function InteractivePdfEditor({
 
       {/* Find & Replace Modal */}
       {showFindReplaceModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-xs">
-          <Card className="w-full max-w-md p-6 space-y-4 bg-[var(--surface)] border-[var(--border)] shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 p-4 backdrop-blur-md animate-in fade-in duration-200">
+          <Card className="w-full max-w-md p-6 space-y-4 bg-white border border-black/10 shadow-[0_20px_60px_rgba(0,0,0,0.15)] rounded-2xl">
             <div className="flex items-center justify-between border-b border-[var(--border)] pb-3">
               <div className="flex items-center space-x-2">
-                <Search className="h-4 w-4 text-blue-400" />
+                <Search className="h-4 w-4 text-[var(--accent)]" />
                 <h3 className="font-semibold text-base">Find & Replace Text</h3>
               </div>
               <button
@@ -2516,7 +2522,7 @@ export function InteractivePdfEditor({
               </div>
 
               {replaceStatusMsg && (
-                <div className="p-2 rounded bg-[var(--surface-elevated)] border border-[var(--border)] text-xs text-center font-medium text-cyan-300">
+                <div className="p-2 rounded bg-blue-50 border border-blue-200 text-xs text-center font-medium text-blue-700">
                   {replaceStatusMsg}
                 </div>
               )}
@@ -2550,8 +2556,8 @@ export function InteractivePdfEditor({
 
       {/* Signature Modal */}
       {showSigModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-xs">
-          <Card className="w-full max-w-md p-6 space-y-4 bg-[var(--surface)] border-[var(--border)]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 p-4 backdrop-blur-md animate-in fade-in duration-200">
+          <Card className="w-full max-w-md p-6 space-y-4 bg-white border border-black/10 shadow-[0_20px_60px_rgba(0,0,0,0.15)] rounded-2xl">
             <div className="flex items-center justify-between border-b border-[var(--border)] pb-3">
               <h3 className="font-semibold text-base">Create Signature</h3>
               <button
@@ -2644,8 +2650,8 @@ export function InteractivePdfEditor({
 
       {/* Stamp Selector Modal */}
       {showStampModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-xs">
-          <Card className="w-full max-w-sm p-6 space-y-4 bg-[var(--surface)] border-[var(--border)]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 p-4 backdrop-blur-md animate-in fade-in duration-200">
+          <Card className="w-full max-w-sm p-6 space-y-4 bg-white border border-black/10 shadow-[0_20px_60px_rgba(0,0,0,0.15)] rounded-2xl">
             <div className="flex items-center justify-between border-b border-[var(--border)] pb-3">
               <h3 className="font-semibold text-base">Select Document Stamp</h3>
               <button
@@ -2662,7 +2668,7 @@ export function InteractivePdfEditor({
                   key={stamp.text}
                   onClick={() => handleAddStamp(stamp)}
                   style={{ borderColor: stamp.color, color: stamp.color }}
-                  className="p-3 border-2 rounded-md font-bold text-xs uppercase tracking-wider text-center hover:scale-105 transition-transform bg-white/5 cursor-pointer"
+                  className="p-3 border-2 rounded-xl font-bold text-xs uppercase tracking-wider text-center hover:scale-105 transition-transform bg-black/[0.02] hover:bg-black/[0.05] cursor-pointer"
                 >
                   {stamp.text}
                 </button>
