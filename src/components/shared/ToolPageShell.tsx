@@ -18,52 +18,62 @@ export function ToolPageShell({ tool, children }: ToolPageShellProps) {
 
   return (
     <ToastProvider>
-      <div className="flex min-h-screen flex-col bg-[#191919] text-[#ffffff] selection:bg-[#5645d4] selection:text-white font-sans">
+      <div className="flex min-h-screen flex-col bg-[var(--background)] text-[var(--foreground)] selection:bg-[#0071e3] selection:text-white font-sans">
         <Header />
 
         <main className="flex-1 py-8 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full space-y-6">
           {/* Breadcrumbs Navigation */}
-          <div className="flex items-center justify-between text-xs text-[#9b9b9b]">
+          <div className="flex items-center justify-between text-xs text-[#6e6e73]">
             <nav className="flex items-center space-x-1.5">
-              <Link href="/" className="hover:text-white transition-colors">
+              <Link href="/" className="hover:text-[#1d1d1f] transition-colors">
                 Home
               </Link>
-              <ChevronRight className="h-3 w-3 text-[#6b6b6b]" />
-              <Link href={`/#${tool.category}`} className="hover:text-white transition-colors">
-                {categoryInfo?.name || tool.category}
+              <ChevronRight className="h-3 w-3 text-[#86868b]" />
+              <Link href={`/#${tool.category}`} className="hover:text-[#1d1d1f] transition-colors capitalize">
+                {categoryInfo?.name || tool.category.replace("-", " ")}
               </Link>
-              <ChevronRight className="h-3 w-3 text-[#6b6b6b]" />
-              <span className="text-white font-medium">{tool.name}</span>
+              <ChevronRight className="h-3 w-3 text-[#86868b]" />
+              <span className="text-[#1d1d1f] font-semibold">{tool.name}</span>
             </nav>
 
             <Link
-              href="/"
-              className="inline-flex items-center space-x-1 text-xs text-[#9b9b9b] hover:text-white transition-colors bg-white/[0.04] border border-white/[0.08] px-2.5 py-1 rounded-full"
+              href="/#all-tools"
+              className="inline-flex items-center space-x-1 text-xs text-[#6e6e73] hover:text-[#1d1d1f] transition-all bg-white border border-black/10 hover:border-black/20 px-3 py-1 rounded-full shadow-2xs"
             >
-              <ArrowLeft className="h-3 w-3 mr-0.5" />
+              <ArrowLeft className="h-3 w-3 mr-0.5 text-[#0071e3]" />
               <span>All 44 Tools</span>
             </Link>
           </div>
 
-          {/* Notion Style Tool Header Card */}
-          <div className="p-6 sm:p-7 rounded-[14px] bg-[#202020] border border-white/[0.08] space-y-2.5">
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <div className="flex items-center space-x-3">
-                <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
-                  {tool.name}
-                </h1>
-                <div className="inline-flex items-center space-x-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 text-[10px] font-bold text-emerald-300">
-                  <Shield className="h-3 w-3" />
-                  <span>100% Client-Side</span>
+          {/* macOS Style Tool Window Header Card */}
+          <div className="p-6 sm:p-7 rounded-[18px] bg-white border border-black/[0.08] shadow-[var(--shadow-mac-sm)] space-y-4">
+            <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-black/[0.05]">
+              <div className="flex items-center space-x-2">
+                {/* Traffic light window dots */}
+                <div className="flex items-center space-x-1.5" aria-hidden="true">
+                  <span className="h-3 w-3 rounded-full bg-[#ff5f57] border border-[#e0443e]/40 shadow-2xs" />
+                  <span className="h-3 w-3 rounded-full bg-[#febc2e] border border-[#d89e24]/40 shadow-2xs" />
+                  <span className="h-3 w-3 rounded-full bg-[#28c840] border border-[#1aab29]/40 shadow-2xs" />
                 </div>
+                <span className="text-[11px] font-mono text-[#86868b] pl-2 hidden sm:inline">
+                  {tool.slug}.app
+                </span>
               </div>
-              <span className="text-[11px] font-mono text-[#6b6b6b]">
-                Local WASM Processing
-              </span>
+
+              <div className="inline-flex items-center space-x-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-0.5 text-[10px] font-semibold text-emerald-700">
+                <Shield className="h-3 w-3" />
+                <span>100% Client-Side Sandbox</span>
+              </div>
             </div>
-            <p className="text-xs sm:text-sm text-[#9b9b9b] max-w-2xl leading-relaxed">
-              {tool.description}
-            </p>
+
+            <div className="space-y-1.5">
+              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#1d1d1f]">
+                {tool.name}
+              </h1>
+              <p className="text-xs sm:text-sm text-[#6e6e73] max-w-2xl leading-relaxed">
+                {tool.description}
+              </p>
+            </div>
           </div>
 
           {/* Tool Specific UI Content */}

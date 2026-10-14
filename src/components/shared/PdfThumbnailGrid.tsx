@@ -56,13 +56,13 @@ function SortableItem({ item, onRotate, onDelete }: SortableItemProps) {
     <div
       ref={setNodeRef}
       style={style}
-      className="group relative flex flex-col items-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--surface-elevated)] p-3 text-center transition-shadow hover:border-[var(--border-hover)]"
+      className="group relative flex flex-col items-center rounded-[14px] border border-black/10 bg-white p-3 text-center transition-all shadow-xs hover:border-[#0071e3]/40 hover:shadow-sm"
     >
       {/* Drag handle */}
       <div
         {...attributes}
         {...listeners}
-        className="absolute top-2 left-2 cursor-grab active:cursor-grabbing text-[var(--subtle-foreground)] hover:text-[var(--foreground)] p-1 rounded hover:bg-[var(--surface-hover)]"
+        className="absolute top-2 left-2 cursor-grab active:cursor-grabbing text-[#86868b] hover:text-[#1d1d1f] p-1 rounded hover:bg-black/5"
       >
         <GripVertical className="h-4 w-4" />
       </div>
@@ -72,7 +72,7 @@ function SortableItem({ item, onRotate, onDelete }: SortableItemProps) {
         {onRotate && (
           <button
             onClick={() => onRotate(item.id)}
-            className="rounded p-1 text-[var(--muted-foreground)] hover:bg-[var(--surface-hover)] hover:text-[var(--foreground)]"
+            className="rounded p-1 text-[#6e6e73] hover:bg-black/5 hover:text-[#1d1d1f]"
             title="Rotate 90°"
           >
             <RotateCw className="h-3.5 w-3.5" />
@@ -81,7 +81,7 @@ function SortableItem({ item, onRotate, onDelete }: SortableItemProps) {
         {onDelete && (
           <button
             onClick={() => onDelete(item.id)}
-            className="rounded p-1 text-rose-400 hover:bg-rose-500/20"
+            className="rounded p-1 text-rose-500 hover:bg-rose-50"
             title="Remove page"
           >
             <Trash2 className="h-3.5 w-3.5" />
@@ -90,7 +90,7 @@ function SortableItem({ item, onRotate, onDelete }: SortableItemProps) {
       </div>
 
       {/* Thumbnail preview image or fallback placeholder */}
-      <div className="my-6 flex h-36 w-28 items-center justify-center rounded border border-[var(--border)] bg-black/40 overflow-hidden relative">
+      <div className="my-6 flex h-36 w-28 items-center justify-center rounded-lg border border-black/10 bg-[#f0f0f4] overflow-hidden relative shadow-2xs">
         {item.thumbnailUrl ? (
           /* eslint-disable-next-line @next/next/no-img-element */
           <img

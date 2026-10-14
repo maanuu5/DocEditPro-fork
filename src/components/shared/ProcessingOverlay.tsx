@@ -23,14 +23,14 @@ export function ProcessingOverlay({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in-0">
-      <div className="relative w-full max-w-md rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--surface-elevated)] p-6 shadow-2xl space-y-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/30 backdrop-blur-sm animate-in fade-in-0">
+      <div className="relative w-full max-w-md rounded-[18px] border border-black/10 bg-white p-6 shadow-2xl space-y-4">
         {onCancel && (
           <Button
             variant="ghost"
             size="icon"
             onClick={onCancel}
-            className="absolute right-3 top-3 h-8 w-8 text-[var(--muted-foreground)]"
+            className="absolute right-3 top-3 h-8 w-8 text-[#86868b] hover:text-[#1d1d1f] rounded-full"
           >
             <X className="h-4 w-4" />
             <span className="sr-only">Cancel</span>
@@ -38,7 +38,7 @@ export function ProcessingOverlay({
         )}
 
         <div className="flex items-center space-x-3 pr-6">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[rgba(59,130,246,0.15)] text-[var(--accent)] shrink-0">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#eff6ff] border border-[#bfdbfe] text-[#0071e3] shrink-0 shadow-2xs">
             <Loader2 className="h-5 w-5 animate-spin" />
           </div>
           <div>
