@@ -1,20 +1,18 @@
-# Notion Design System — DESIGN.md Specification
+# macOS Light UI Design System — DESIGN.md Specification
 
 > **Source of Truth for AI Coding Agents & Front-End Developers**
-> Based on the Notion Design Language specification from [DesignMD](https://designmd.co/d/notion).
+> Modern, clean Apple macOS Light UI aesthetic with high clarity, frosted acrylic glass, and refined typography.
 
 ---
 
 ## 1. Design Philosophy & Aesthetic Core
 
-Notion's visual identity blends the structure of a powerful relational workspace with the tactile simplicity of a clean, distraction-free document canvas.
-
-### Core Principles
-1. **Document-First Typography**: Content is king. Generous line-heights, crisp sans-serif type, and clear heading hierarchies.
-2. **Disciplined Minimalism**: Surfaces are calm, uncluttered, and functional. Contrast is achieved through subtle hairline borders, muted backgrounds, and deliberate color accents.
-3. **Signature Color Moments**: The primary brand purple (`#5645d4`) and deep navy (`#0a1530`) are balanced by soft pastel card tints (peach, rose, mint, lavender, sky, cream).
-4. **Structured Modularity**: Interfaces are organized into clean blocks, callouts, and rounded bento containers with consistent padding.
-5. **Tactile Micro-Interactions**: Hover transitions, pill chips, and clear keyboard affordances (`⌘K`, shortcuts).
+DocEditPro's visual identity embraces the timeless simplicity, legibility, and elegance of Apple macOS:
+1. **Clean Canvas**: Neutral light desktop canvas (`#f5f5f7`) with crisp white window surfaces (`#ffffff`).
+2. **Apple System Typography**: Clean, high-contrast typography (`-apple-system`, `SF Pro`, `Inter`) with deep charcoal (`#1d1d1f`) for optimal readability.
+3. **macOS Window Motifs**: Subtle hairline borders (`rgba(0, 0, 0, 0.08)`), rounded squircle corners (`14px` - `20px`), soft multi-layered depth shadows, and macOS traffic lights (`#ff5f57`, `#febc2e`, `#28c840`).
+4. **Vibrant Apple Accents**: Apple System Blue (`#0071e3`), Emerald Green (`#34c759`), and harmonious pastel category chips.
+5. **Translucent Frosted Glass**: Dynamic `backdrop-blur` and translucent glass headers (`bg-white/80 backdrop-blur-xl`).
 
 ---
 
@@ -23,46 +21,35 @@ Notion's visual identity blends the structure of a powerful relational workspace
 ### Primary & Brand Accents
 | Token | Hex | Role |
 |---|---|---|
-| `--notion-purple` | `#5645d4` | Primary brand CTA, active links, focused states |
-| `--notion-purple-hover` | `#4838bc` | Hover state for primary CTAs |
-| `--notion-purple-light` | `rgba(86, 69, 212, 0.12)` | Subtle purple backgrounds, badge containers |
-| `--notion-navy` | `#0a1530` | Deep contrast hero backdrops, dark banners |
-| `--notion-navy-card` | `#0f1d40` | Elevated dark cards in navy containers |
+| `--mac-blue` | `#0071e3` | Apple System Blue primary CTA, active controls, links |
+| `--mac-blue-hover` | `#0077ed` | Hover state for primary CTAs |
+| `--mac-blue-light` | `rgba(0, 113, 227, 0.08)` | Selected states, badge containers |
+| `--mac-traffic-red` | `#ff5f57` | macOS Close traffic light dot |
+| `--mac-traffic-yellow` | `#febc2e` | macOS Minimize traffic light dot |
+| `--mac-traffic-green` | `#28c840` | macOS Expand/Zoom traffic light dot |
 
-### Neutral & Surface Scales (Dark & Light)
-
-#### Dark Theme / Workspace Surfaces
+### Neutral & Surface Scales (macOS Light Mode)
 | Token | Hex / Value | Usage |
 |---|---|---|
-| `--notion-bg-dark` | `#191919` | Main dark background canvas |
-| `--notion-surface-dark` | `#202020` | Workspace cards, sidebar panels |
-| `--notion-surface-hover-dark` | `#2c2c2c` | Hovered item highlight |
-| `--notion-surface-elevated-dark` | `#262626` | Modals, popovers, command palette |
-| `--notion-border-dark` | `rgba(255, 255, 255, 0.08)` | Hairline dividers and card outlines |
-| `--notion-border-hover-dark` | `rgba(255, 255, 255, 0.18)` | Hovered card borders |
-| `--notion-text-primary-dark` | `#ffffff` | Primary headings, titles |
-| `--notion-text-secondary-dark` | `#9b9b9b` | Paragraphs, descriptions |
-| `--notion-text-muted-dark` | `#6b6b6b` | Micro-copy, metadata, hotkeys |
+| `--background` | `#f5f5f7` | macOS desktop canvas background |
+| `--surface` | `#ffffff` | Clean white cards, window panels |
+| `--surface-hover` | `#f0f0f4` | List item hover, button hover |
+| `--surface-elevated` | `#ffffff` | Popovers, modals, spotlight search |
+| `--border` | `rgba(0, 0, 0, 0.08)` | Hairline dividers and window frames |
+| `--border-hover` | `rgba(0, 113, 227, 0.35)` | Active/focused card borders |
+| `--foreground` | `#1d1d1f` | High-contrast Apple charcoal text |
+| `--muted-foreground` | `#6e6e73` | Apple secondary text, descriptions |
+| `--subtle-foreground` | `#86868b` | Captions, metadata, keyboard shortcuts |
 
-#### Light Mode Workspace Surfaces
-| Token | Hex / Value | Usage |
-|---|---|---|
-| `--notion-bg-light` | `#ffffff` | Clean document page canvas |
-| `--notion-surface-light` | `#f7f6f3` | Subtle panel background, code blocks |
-| `--notion-surface-hover-light` | `#efede8` | Table row hover, list hover |
-| `--notion-border-light` | `rgba(55, 53, 47, 0.09)` | Standard hairline rule |
-| `--notion-text-primary-light` | `#37352f` | Notion standard high-contrast charcoal |
-| `--notion-text-secondary-light` | `#787774` | Subtitles and captions |
-
-### Notion Pastel Palette (Feature & Category Chips)
-| Color | Background (Light) | Dark Tint Overlay | Accent Border | Usage |
-|---|---|---|---|---|
-| **Mint / Green** | `#d3f9d8` | `rgba(34, 197, 94, 0.12)` | `#22c55e` | Success, verified, privacy badges |
-| **Sky / Blue** | `#d0ebff` | `rgba(59, 130, 246, 0.12)` | `#3b82f6` | Essentials, conversions, links |
-| **Lavender / Purple** | `#e8d9ff` | `rgba(139, 92, 246, 0.12)` | `#8b5cf6` | Edit tools, AI/Studio features |
-| **Rose / Red** | `#ffd8d8` | `rgba(239, 68, 68, 0.12)` | `#ef4444` | Security, redaction, warnings |
-| **Peach / Orange** | `#ffe8cc` | `rgba(249, 115, 22, 0.12)` | `#f97316` | Business tools, billing, stamps |
-| **Cream / Yellow** | `#fff3bf` | `rgba(234, 179, 8, 0.12)` | `#eab308` | Highlights, OCR, notifications |
+### macOS Soft Pastel Spectrum (Categories)
+| Category | Background | Text Accent | Border |
+|---|---|---|---|
+| **Essentials** | `#eff6ff` (Sky) | `#0071e3` | `#bfdbfe` |
+| **Edit & Organize** | `#f5f3ff` (Purple) | `#7c3aed` | `#ddd6fe` |
+| **Security & Privacy**| `#ecfdf5` (Mint) | `#059669` | `#a7f3d0` |
+| **Convert & Export** | `#fffbeb` (Amber) | `#d97706` | `#fde68a` |
+| **Scan & Share** | `#ecfeff` (Cyan) | `#0891b2` | `#a5f3fc` |
+| **Business** | `#fff1f2` (Rose) | `#e11d48` | `#fecdd3` |
 
 ---
 

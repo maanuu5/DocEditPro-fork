@@ -1,57 +1,68 @@
 @import "tailwindcss";
 
 :root {
-  /* Notion Color Tokens per DESIGN.md */
-  --background: #191919;        /* Notion dark document canvas */
-  --surface: #202020;           /* Notion workspace cards, panels */
-  --surface-hover: #2c2c2c;      /* Notion hover state */
-  --surface-elevated: #262626;  /* Modals, popovers, dropdowns */
-  --surface-card: rgba(32, 32, 32, 0.85);
+  /* Apple macOS Light Color Tokens per DESIGN.md */
+  --background: #f5f5f7;        /* Clean macOS system background canvas */
+  --surface: #ffffff;           /* Clean white window & card surfaces */
+  --surface-hover: #f0f0f4;      /* Smooth hover highlight */
+  --surface-elevated: #ffffff;  /* Elevated modals, spotlight popovers */
+  --surface-card: rgba(255, 255, 255, 0.95);
 
-  /* Notion Signature Brand Colors */
-  --accent: #5645d4;            /* Notion Purple */
-  --accent-hover: #4838bc;      /* Notion Purple Hover */
+  /* Apple Signature Brand Colors */
+  --accent: #0071e3;            /* Apple System Blue */
+  --accent-hover: #0077ed;      /* Apple Blue Hover */
   --accent-foreground: #ffffff;
-  --accent-light: rgba(86, 69, 212, 0.14);
-  --notion-navy: #0a1530;       /* Notion Deep Navy */
-  --notion-navy-card: #0f1d40;
+  --accent-light: rgba(0, 113, 227, 0.08);
+  --notion-navy: #1d1d1f;       /* Preserved alias pointing to Apple Charcoal */
+  --notion-navy-card: #f5f5f7;
 
-  /* Notion Pastel Tint Spectrum */
-  --notion-mint: #22c55e;
-  --notion-mint-bg: rgba(34, 197, 94, 0.12);
-  --notion-sky: #3b82f6;
-  --notion-sky-bg: rgba(59, 130, 246, 0.12);
-  --notion-lavender: #8b5cf6;
-  --notion-lavender-bg: rgba(139, 92, 246, 0.14);
-  --notion-rose: #ef4444;
-  --notion-rose-bg: rgba(239, 68, 68, 0.12);
-  --notion-peach: #f97316;
-  --notion-peach-bg: rgba(249, 115, 22, 0.12);
-  --notion-cream: #eab308;
-  --notion-cream-bg: rgba(234, 179, 8, 0.12);
+  /* macOS Traffic Light Dots */
+  --traffic-red: #ff5f57;
+  --traffic-yellow: #febc2e;
+  --traffic-green: #28c840;
 
-  /* Hairline Borders */
-  --border: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(86, 69, 212, 0.45);
-  --border-subtle: rgba(255, 255, 255, 0.05);
+  /* macOS Category Pastel Tint Spectrum */
+  --notion-mint: #059669;
+  --notion-mint-bg: #ecfdf5;
+  --notion-sky: #0071e3;
+  --notion-sky-bg: #eff6ff;
+  --notion-lavender: #7c3aed;
+  --notion-lavender-bg: #f5f3ff;
+  --notion-rose: #e11d48;
+  --notion-rose-bg: #fff1f2;
+  --notion-peach: #d97706;
+  --notion-peach-bg: #fffbeb;
+  --notion-cream: #b45309;
+  --notion-cream-bg: #fef3c7;
 
-  /* Typography & Foreground */
-  --foreground: #ffffff;
-  --muted-foreground: #9b9b9b;
-  --subtle-foreground: #6b6b6b;
+  /* Crisp Hairline Borders */
+  --border: rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(0, 113, 227, 0.4);
+  --border-subtle: rgba(0, 0, 0, 0.04);
+
+  /* Apple System Typography & Foreground */
+  --foreground: #1d1d1f;
+  --muted-foreground: #6e6e73;
+  --subtle-foreground: #86868b;
 
   /* Semantic */
-  --success: #22c55e;
-  --warning: #eab308;
-  --danger: #ef4444;
-  --ring: #5645d4;
+  --success: #34c759;
+  --warning: #ff9500;
+  --danger: #ff3b30;
+  --ring: #0071e3;
 
-  /* Radii */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 14px;
+  /* Radii (Apple Squircle Aesthetics) */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
   --radius-xl: 22px;
   --radius-pill: 9999px;
+
+  /* macOS Shadows */
+  --shadow-mac-xs: 0 1px 2px rgba(0, 0, 0, 0.03), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  --shadow-mac-sm: 0 2px 6px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06);
+  --shadow-mac-md: 0 8px 24px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06);
+  --shadow-mac-lg: 0 20px 48px -10px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.07);
 }
 
 @theme inline {
@@ -78,7 +89,7 @@
   --radius-lg: var(--radius-lg);
   --radius-xl: var(--radius-xl);
 
-  --font-sans: Inter, "Notion Sans", system-ui, -apple-system, sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "SF Pro", "Helvetica Neue", Inter, system-ui, sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
 }
 
@@ -95,15 +106,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image:
-    radial-gradient(circle at 50% 0%, rgba(86, 69, 212, 0.08) 0%, transparent 55%),
-    radial-gradient(circle at 100% 25%, rgba(10, 21, 48, 0.5) 0%, transparent 50%);
+    radial-gradient(ellipse 90% 40% at 50% -10%, rgba(0, 113, 227, 0.04), transparent 70%),
+    linear-gradient(180deg, #ffffff 0%, #f5f5f7 240px);
   background-attachment: fixed;
 }
 
-/* Notion Callout Block */
-.notion-callout {
-  background: rgba(86, 69, 212, 0.08);
-  border: 1px solid rgba(86, 69, 212, 0.25);
+/* macOS Callout Pill / Banner */
+.notion-callout,
+.mac-callout {
+  background: rgba(0, 113, 227, 0.05);
+  border: 1px solid rgba(0, 113, 227, 0.18);
   border-radius: var(--radius-md);
   padding: 14px 18px;
   display: flex;
@@ -111,34 +123,64 @@ body {
   gap: 12px;
 }
 
-/* Notion Card Styling */
-.notion-card {
+/* macOS Card Styling */
+.notion-card,
+.mac-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-mac-xs);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.notion-card:hover {
+.notion-card:hover,
+.mac-card:hover {
   border-color: var(--border-hover);
-  box-shadow: 0 6px 20px -4px rgba(0, 0, 0, 0.4), 0 0 24px -4px rgba(86, 69, 212, 0.2);
+  box-shadow: var(--shadow-mac-md);
   transform: translateY(-1.5px);
 }
 
-/* Custom Notion Scrollbars */
+/* macOS Window Mockup */
+.mac-window {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  box-shadow: var(--shadow-mac-lg);
+  overflow: hidden;
+}
+
+.mac-traffic-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mac-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+}
+.mac-dot-red { background-color: var(--traffic-red); }
+.mac-dot-yellow { background-color: var(--traffic-yellow); }
+.mac-dot-green { background-color: var(--traffic-green); }
+
+/* Custom Light macOS Scrollbars */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.16);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.3);
+  background-clip: content-box;
 }
 
 /* Accessibility: Skip to Content Link */

@@ -48,22 +48,22 @@ export function Dialog({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 bg-black/30 backdrop-blur-sm transition-opacity"
         onClick={onClose}
       />
 
       {/* Content */}
       <div
         className={cn(
-          "relative z-10 w-full rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--surface-elevated)] p-6 shadow-2xl transition-all animate-in fade-in-0 zoom-in-95",
+          "relative z-10 w-full rounded-[18px] border border-black/10 bg-white p-6 shadow-2xl transition-all animate-in fade-in-0 zoom-in-95",
           widthClasses
         )}
       >
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 rounded-sm p-1 text-[var(--muted-foreground)] transition-colors hover:bg-[var(--surface-hover)] hover:text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--ring)]"
+          className="absolute right-4 top-4 rounded-full p-1 text-[var(--muted-foreground)] transition-colors hover:bg-black/5 hover:text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--ring)] cursor-pointer"
         >
-          <X className="h-5 w-5" />
+          <X className="h-4 w-4" />
           <span className="sr-only">Close</span>
         </button>
 
