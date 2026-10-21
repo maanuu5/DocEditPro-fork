@@ -1,24 +1,29 @@
+"use client";
+
+import * as React from "react";
 import Link from "next/link";
 import { CATEGORIES, TOOLS } from "@/lib/tools-data";
+import { ShieldCheck } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="w-full border-t border-black/[0.08] bg-[#f0f0f4] text-[#6e6e73]">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <footer className="w-full border-t border-[var(--border)] bg-[var(--background)] text-[var(--muted-foreground)] pt-16 pb-20">
+      <div className="mx-auto max-w-[1200px] px-6 lg:px-8 space-y-12">
+        {/* Category Tool Directory */}
         <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6">
           {CATEGORIES.map((category) => {
             const categoryTools = TOOLS.filter((t) => t.category === category.id);
             return (
               <div key={category.id} className="space-y-3">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-[#1d1d1f]">
+                <h4 className="text-[12px] font-mono font-medium text-[var(--foreground)] uppercase tracking-wider">
                   {category.name}
                 </h4>
-                <ul className="space-y-2 text-xs">
+                <ul className="space-y-2 text-[13px]">
                   {categoryTools.map((tool) => (
                     <li key={tool.id}>
                       <Link
                         href={`/${tool.slug}`}
-                        className="hover:text-[#0071e3] transition-colors"
+                        className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors line-clamp-1"
                       >
                         {tool.name}
                       </Link>
@@ -30,26 +35,28 @@ export function Footer() {
           })}
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between border-t border-black/[0.08] pt-8 sm:flex-row">
-          <div className="flex items-center space-x-3">
-            <span className="font-bold text-sm text-[#1d1d1f]">DocEditPro</span>
-            <span className="text-xs text-[#86868b]">
-              © {new Date().getFullYear()} DocEditPro. Privacy-first, 100% client-side PDF toolkit.
+        {/* Bottom Bar */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-[var(--border)] text-[13px] font-mono">
+          <div className="flex items-center gap-3">
+            <span className="font-semibold text-[var(--foreground)] font-sans text-sm">
+              DocEditPro
+            </span>
+            <span className="text-[var(--subtle-foreground)]">
+              © {new Date().getFullYear()} · 100% Client-Side WebAssembly
             </span>
           </div>
 
-          <div className="mt-4 flex flex-wrap items-center gap-4 text-xs text-[#6e6e73] sm:mt-0">
-            <Link href="/guides" className="hover:text-[#0071e3] transition-colors underline-offset-4 hover:underline">
-              How-To Guides
-            </Link>
+          <div className="flex items-center gap-4 text-[var(--subtle-foreground)] text-xs">
+            <span className="flex items-center gap-1.5 text-[var(--foreground)]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--success)]" />
+              <span>All Systems Operational</span>
+            </span>
             <span>·</span>
-            <Link href="/edit-pdf-text" className="hover:text-[#0071e3] transition-colors underline-offset-4 hover:underline">
-              PDF Editor
-            </Link>
+            <span>Zero Network Uploads</span>
             <span>·</span>
-            <span className="text-emerald-700 font-medium">Zero Server Uploads</span>
-            <span>·</span>
-            <span>No Watermarks</span>
+            <a href="#main-content" className="hover:text-[var(--foreground)] transition-colors">
+              Back to Top ↑
+            </a>
           </div>
         </div>
       </div>
