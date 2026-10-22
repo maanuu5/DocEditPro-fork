@@ -59,8 +59,8 @@ export function OptionCard({
         "group relative flex flex-col justify-between p-4 sm:p-5 rounded-[var(--radius-lg)] transition-all duration-200 select-none text-left",
         disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer",
         selected
-          ? "bg-white/[0.06] border-2 border-white shadow-xs"
-          : "bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--border-hover)] hover:bg-[var(--surface-hover)] hover:-translate-y-0.5",
+          ? "bg-white/[0.08] border-2 border-white shadow-xs"
+          : "bg-[#141416] border border-white/[0.12] hover:border-white/[0.24] hover:bg-[#1a1a1e] hover:-translate-y-0.5 shadow-2xs",
         className
       )}
     >
@@ -74,7 +74,7 @@ export function OptionCard({
                   "flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--radius-md)] border transition-transform duration-200 group-hover:scale-105",
                   selected
                     ? "bg-white text-black border-white"
-                    : "bg-white/[0.04] text-[var(--foreground)] border-[var(--border)]"
+                    : "bg-white/[0.07] text-white border-white/[0.12]"
                 )}
               >
                 {icon}
@@ -84,7 +84,7 @@ export function OptionCard({
               <div className="flex items-center space-x-2">
                 <span
                   className={cn(
-                    "text-sm font-semibold tracking-tight transition-colors text-[var(--foreground)]",
+                    "text-sm font-semibold tracking-tight transition-colors text-white",
                     selected && "text-white"
                   )}
                 >
@@ -111,7 +111,7 @@ export function OptionCard({
                 "h-5 w-5 shrink-0 rounded-full border transition-all duration-200 flex items-center justify-center mt-0.5",
                 selected
                   ? "border-white bg-white text-black shadow-2xs scale-105"
-                  : "border-[var(--border-strong)] bg-transparent group-hover:border-white/50"
+                  : "border-white/30 bg-transparent group-hover:border-white/60"
               )}
             >
               {selected ? (
