@@ -1441,12 +1441,6 @@ export function InteractivePdfEditor({
       {/* Top Application Ribbon */}
       <header className="flex items-center justify-between px-4 py-2 border-b border-[var(--border)] bg-[var(--surface)] text-xs z-30 shrink-0">
         <div className="flex items-center space-x-3">
-          {/* macOS window traffic lights */}
-          <div className="flex items-center gap-1.5 mr-1" aria-hidden="true">
-            <span className="w-3 h-3 rounded-full bg-[#ff5f57] border border-[#e0443e] inline-block shadow-xs" />
-            <span className="w-3 h-3 rounded-full bg-[#febc2e] border border-[#d89e24] inline-block shadow-xs" />
-            <span className="w-3 h-3 rounded-full bg-[#28c840] border border-[#1aab29] inline-block shadow-xs" />
-          </div>
           {onClose && (
             <Button variant="ghost" size="sm" onClick={onClose} className="h-8 px-2 text-xs">
               <ChevronLeft className="h-4 w-4 mr-1" /> Back
@@ -2461,8 +2455,8 @@ export function InteractivePdfEditor({
 
       {/* Find & Replace Modal */}
       {showFindReplaceModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 p-4 backdrop-blur-md animate-in fade-in duration-200">
-          <Card className="w-full max-w-md p-6 space-y-4 bg-white border border-black/10 shadow-[0_20px_60px_rgba(0,0,0,0.15)] rounded-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-md animate-in fade-in duration-200">
+          <Card className="w-full max-w-md p-6 space-y-4 bg-[var(--surface-elevated)] border border-[var(--border)] shadow-2xl rounded-[var(--radius-lg)] text-[var(--foreground)]">
             <div className="flex items-center justify-between border-b border-[var(--border)] pb-3">
               <div className="flex items-center space-x-2">
                 <Search className="h-4 w-4 text-[var(--accent)]" />
@@ -2556,8 +2550,8 @@ export function InteractivePdfEditor({
 
       {/* Signature Modal */}
       {showSigModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 p-4 backdrop-blur-md animate-in fade-in duration-200">
-          <Card className="w-full max-w-md p-6 space-y-4 bg-white border border-black/10 shadow-[0_20px_60px_rgba(0,0,0,0.15)] rounded-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-md animate-in fade-in duration-200">
+          <Card className="w-full max-w-md p-6 space-y-4 bg-[var(--surface-elevated)] border border-[var(--border)] shadow-2xl rounded-[var(--radius-lg)] text-[var(--foreground)]">
             <div className="flex items-center justify-between border-b border-[var(--border)] pb-3">
               <h3 className="font-semibold text-base">Create Signature</h3>
               <button
@@ -2650,8 +2644,8 @@ export function InteractivePdfEditor({
 
       {/* Stamp Selector Modal */}
       {showStampModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 p-4 backdrop-blur-md animate-in fade-in duration-200">
-          <Card className="w-full max-w-sm p-6 space-y-4 bg-white border border-black/10 shadow-[0_20px_60px_rgba(0,0,0,0.15)] rounded-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-md animate-in fade-in duration-200">
+          <Card className="w-full max-w-sm p-6 space-y-4 bg-[var(--surface-elevated)] border border-[var(--border)] shadow-2xl rounded-[var(--radius-lg)] text-[var(--foreground)]">
             <div className="flex items-center justify-between border-b border-[var(--border)] pb-3">
               <h3 className="font-semibold text-base">Select Document Stamp</h3>
               <button
