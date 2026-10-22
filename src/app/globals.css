@@ -9,19 +9,19 @@
 :root {
   /* Backgrounds */
   --background: #000000;        /* Page background */
-  --surface: #0a0a0a;           /* Cards, panels */
-  --surface-hover: #111111;     /* Hover states */
-  --surface-elevated: #141414;  /* Modals, popovers */
+  --surface: #121214;           /* Cards, options, panels - elevated from pitch black */
+  --surface-hover: #1c1c20;     /* Clear, tactile hover states */
+  --surface-elevated: #222226;  /* Modals, popovers */
 
   /* Borders */
-  --border: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(255, 255, 255, 0.16);
-  --border-strong: rgba(255, 255, 255, 0.24);
+  --border: rgba(255, 255, 255, 0.12);
+  --border-hover: rgba(255, 255, 255, 0.22);
+  --border-strong: rgba(255, 255, 255, 0.32);
 
   /* Foreground */
-  --foreground: #fafafa;
-  --muted-foreground: #a1a1a1;
-  --subtle-foreground: #6e6e6e;
+  --foreground: #fcfcfc;
+  --muted-foreground: #b4b4b8;
+  --subtle-foreground: #787880;
 
   /* Accent — Pure Monochrome White per user request */
   --accent: #ffffff;
@@ -146,6 +146,36 @@ html.lenis, html.lenis body {
 :focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 2px;
+}
+
+/* Custom dark scrollbar for modals and tool lists */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.custom-scrollbar::-webkit-scrollbar-corner {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.32);
+}
+@supports not selector(::-webkit-scrollbar) {
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.16) transparent;
+  }
 }
 
 /* Skip link */
