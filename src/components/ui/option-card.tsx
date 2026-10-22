@@ -19,11 +19,11 @@ export interface OptionCardProps {
 }
 
 const BADGE_STYLES: Record<string, string> = {
-  blue: "bg-[#eff6ff] text-[#0071e3] border-[#bfdbfe]",
-  green: "bg-[#ecfdf5] text-[#059669] border-[#a7f3d0]",
-  amber: "bg-[#fffbeb] text-[#d97706] border-[#fde68a]",
-  purple: "bg-[#f5f3ff] text-[#7c3aed] border-[#ddd6fe]",
-  gray: "bg-[#f5f5f7] text-[#6e6e73] border-black/10",
+  blue: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+  green: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+  amber: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+  purple: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+  gray: "bg-white/[0.04] text-[var(--muted-foreground)] border-[var(--border)]",
 };
 
 export function OptionCard({
@@ -56,11 +56,11 @@ export function OptionCard({
         }
       }}
       className={cn(
-        "group relative flex flex-col justify-between p-4 sm:p-5 rounded-[16px] transition-all duration-200 select-none text-left",
+        "group relative flex flex-col justify-between p-4 sm:p-5 rounded-[var(--radius-lg)] transition-all duration-200 select-none text-left",
         disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer",
         selected
-          ? "bg-gradient-to-br from-white via-[#f7faff] to-[#eff6ff] border-2 border-[#0071e3] shadow-[var(--shadow-mac-sm)] shadow-[#0071e3]/10"
-          : "bg-white border border-black/[0.08] hover:border-black/20 hover:bg-[#fafafc] hover:shadow-[var(--shadow-mac-xs)] hover:-translate-y-0.5",
+          ? "bg-white/[0.06] border-2 border-white shadow-xs"
+          : "bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--border-hover)] hover:bg-[var(--surface-hover)] hover:-translate-y-0.5",
         className
       )}
     >
@@ -71,10 +71,10 @@ export function OptionCard({
             {icon && (
               <div
                 className={cn(
-                  "flex h-10 w-10 shrink-0 items-center justify-center rounded-[12px] border transition-transform duration-200 group-hover:scale-105",
+                  "flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--radius-md)] border transition-transform duration-200 group-hover:scale-105",
                   selected
-                    ? "bg-[#0071e3] text-white border-[#0071e3] shadow-xs shadow-[#0071e3]/20"
-                    : "bg-[#f5f5f7] text-[#1d1d1f] border-black/5"
+                    ? "bg-white text-black border-white"
+                    : "bg-white/[0.04] text-[var(--foreground)] border-[var(--border)]"
                 )}
               >
                 {icon}
@@ -84,8 +84,8 @@ export function OptionCard({
               <div className="flex items-center space-x-2">
                 <span
                   className={cn(
-                    "text-sm font-bold tracking-tight transition-colors",
-                    selected ? "text-[#0071e3]" : "text-[#1d1d1f] group-hover:text-[#0071e3]"
+                    "text-sm font-semibold tracking-tight transition-colors text-[var(--foreground)]",
+                    selected && "text-white"
                   )}
                 >
                   {title}
@@ -104,21 +104,21 @@ export function OptionCard({
             </div>
           </div>
 
-          {/* Indicator (macOS Radio or Check) */}
+          {/* Indicator */}
           {indicator !== "none" && (
             <div
               className={cn(
                 "h-5 w-5 shrink-0 rounded-full border transition-all duration-200 flex items-center justify-center mt-0.5",
                 selected
-                  ? "border-[#0071e3] bg-[#0071e3] text-white shadow-2xs scale-105"
-                  : "border-black/20 bg-white group-hover:border-black/35"
+                  ? "border-white bg-white text-black shadow-2xs scale-105"
+                  : "border-[var(--border-strong)] bg-transparent group-hover:border-white/50"
               )}
             >
               {selected ? (
                 indicator === "check" ? (
                   <Check className="h-3 w-3 stroke-[3]" />
                 ) : (
-                  <span className="h-2 w-2 rounded-full bg-white shadow-xs" />
+                  <span className="h-2 w-2 rounded-full bg-black shadow-xs" />
                 )
               ) : null}
             </div>
@@ -127,12 +127,7 @@ export function OptionCard({
 
         {/* Description */}
         {description && (
-          <p
-            className={cn(
-              "text-xs leading-relaxed transition-colors",
-              selected ? "text-[#333336]" : "text-[#6e6e73]"
-            )}
-          >
+          <p className="text-xs leading-relaxed text-[var(--muted-foreground)]">
             {description}
           </p>
         )}
@@ -140,7 +135,7 @@ export function OptionCard({
 
       {/* Meta or extra footer info */}
       {meta && (
-        <div className="mt-3.5 pt-3 border-t border-black/[0.05] text-[11px]">
+        <div className="mt-3.5 pt-3 border-t border-[var(--border)] text-[11px] text-[var(--muted-foreground)]">
           {meta}
         </div>
       )}

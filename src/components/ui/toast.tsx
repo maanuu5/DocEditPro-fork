@@ -53,7 +53,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
           <div
             key={t.id}
             className={cn(
-              "relative flex items-start space-x-3 rounded-2xl border border-black/10 bg-white/95 backdrop-blur-xl p-4 shadow-[0_12px_36px_rgba(0,0,0,0.12)] transition-all animate-in slide-in-from-bottom-5",
+              "relative flex items-start space-x-3 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--surface-elevated)]/95 backdrop-blur-xl p-4 shadow-2xl transition-all animate-in slide-in-from-bottom-5 text-[var(--foreground)]",
               t.type === 'success' && "border-l-4 border-l-[var(--success)]",
               t.type === 'warning' && "border-l-4 border-l-[var(--warning)]",
               t.type === 'danger' && "border-l-4 border-l-[var(--danger)]",

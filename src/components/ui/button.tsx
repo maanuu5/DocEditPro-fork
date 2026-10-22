@@ -8,19 +8,19 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-[#0071e3] text-white hover:bg-[#0077ed] border border-[#0071e3]/20 shadow-xs hover:shadow-[0_2px_10px_rgba(0,113,227,0.25)] active:scale-[0.98]",
+          "bg-white text-black hover:bg-[#ededed] font-medium border border-transparent shadow-xs active:scale-[0.98]",
         secondary:
-          "bg-white text-[var(--foreground)] border border-[var(--border)] hover:bg-[#f0f0f4] hover:border-black/15 shadow-xs active:scale-[0.98]",
+          "bg-[var(--surface)] text-[var(--foreground)] border border-[var(--border)] hover:bg-[var(--surface-hover)] hover:border-[var(--border-hover)] shadow-xs active:scale-[0.98]",
         ghost:
-          "bg-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-black/[0.05] active:scale-[0.98]",
+          "bg-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-white/[0.06] active:scale-[0.98]",
         destructive:
-          "bg-[#ff3b30] text-white hover:bg-[#e0352b] border border-transparent shadow-xs active:scale-[0.98]",
+          "bg-rose-600 text-white hover:bg-rose-500 border border-transparent shadow-xs active:scale-[0.98]",
         outline:
-          "bg-white text-[var(--foreground)] border border-[var(--border)] hover:bg-[#f0f0f4] hover:border-black/15 shadow-xs",
+          "bg-transparent text-[var(--foreground)] border border-[var(--border)] hover:bg-[var(--surface-hover)] hover:border-[var(--border-hover)] shadow-xs active:scale-[0.98]",
         notionPill:
-          "bg-[#0071e3] text-white hover:bg-[#0077ed] rounded-full px-5 py-2 text-xs font-semibold shadow-xs shadow-[#0071e3]/25 active:scale-[0.98]",
+          "bg-white text-black hover:bg-[#ededed] rounded-full px-5 py-2 text-xs font-semibold shadow-xs active:scale-[0.98]",
         macPill:
-          "bg-[#0071e3] text-white hover:bg-[#0077ed] rounded-full px-5 py-2 text-xs font-semibold shadow-xs shadow-[#0071e3]/25 active:scale-[0.98]",
+          "bg-white text-black hover:bg-[#ededed] rounded-full px-5 py-2 text-xs font-semibold shadow-xs active:scale-[0.98]",
       },
       size: {
         sm: "h-8 px-3 text-xs gap-1.5",

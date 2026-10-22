@@ -17,12 +17,12 @@ const CATEGORY_ICONS: Record<string, React.ReactNode> = {
 };
 
 const CATEGORY_CHIP_BG: Record<string, string> = {
-  essentials: "bg-[#eff6ff] border-[#bfdbfe]",
-  'edit-organize': "bg-[#f5f3ff] border-[#ddd6fe]",
-  'security-privacy': "bg-[#ecfdf5] border-[#a7f3d0]",
-  'convert-export': "bg-[#fffbeb] border-[#fde68a]",
-  'scan-share': "bg-[#ecfeff] border-[#a5f3fc]",
-  business: "bg-[#fff1f2] border-[#fecdd3]",
+  essentials: "bg-white/[0.04] border-[var(--border)]",
+  'edit-organize': "bg-white/[0.04] border-[var(--border)]",
+  'security-privacy': "bg-white/[0.04] border-[var(--border)]",
+  'convert-export': "bg-white/[0.04] border-[var(--border)]",
+  'scan-share': "bg-white/[0.04] border-[var(--border)]",
+  business: "bg-white/[0.04] border-[var(--border)]",
 };
 
 export function CommandPalette({
@@ -82,9 +82,9 @@ export function CommandPalette({
   return (
     <Dialog isOpen={isOpen} onClose={onClose} maxWidth="lg">
       <div className="space-y-4">
-        {/* macOS Spotlight Search Bar */}
-        <div className="relative flex items-center border-b border-black/10 pb-3">
-          <Search className="h-5 w-5 text-[#0071e3] mr-3 shrink-0" />
+        {/* Search Bar */}
+        <div className="relative flex items-center border-b border-[var(--border)] pb-3">
+          <Search className="h-5 w-5 text-[var(--foreground)] mr-3 shrink-0" />
           <input
             type="text"
             value={query}
@@ -92,11 +92,11 @@ export function CommandPalette({
               setQuery(e.target.value);
               setSelectedIndex(0);
             }}
-            placeholder="Spotlight Search: 44 PDF tools (e.g. edit, compress, OCR, encrypt)..."
-            className="w-full bg-transparent text-base text-[#1d1d1f] placeholder:text-[#86868b] focus:outline-none"
+            placeholder="Search 44 PDF tools (e.g. edit, compress, OCR, encrypt)..."
+            className="w-full bg-transparent text-base text-[var(--foreground)] placeholder:text-[var(--subtle-foreground)] focus:outline-none"
             autoFocus
           />
-          <kbd className="hidden sm:inline-flex items-center rounded-md border border-black/10 bg-[#f5f5f7] px-2 py-0.5 font-mono text-[10px] text-[#6e6e73] shadow-2xs">
+          <kbd className="hidden sm:inline-flex items-center rounded-[var(--radius-sm)] border border-[var(--border)] bg-white/[0.04] px-2 py-0.5 font-mono text-[10px] text-[var(--muted-foreground)]">
             ESC
           </kbd>
         </div>
@@ -104,31 +104,31 @@ export function CommandPalette({
         {/* Results list */}
         <div className="max-h-[380px] overflow-y-auto space-y-1.5 pr-1">
           {filteredTools.length === 0 ? (
-            <div className="p-8 text-center text-[#6e6e73]">
+            <div className="p-8 text-center text-[var(--muted-foreground)]">
               No matching PDF tools found for &quot;{query}&quot;
             </div>
           ) : (
             filteredTools.map((tool, idx) => {
               const isSelected = idx === selectedIndex;
-              const chipBg = CATEGORY_CHIP_BG[tool.category] || "bg-[#f5f5f7] border-black/10";
+              const chipBg = CATEGORY_CHIP_BG[tool.category] || "bg-white/[0.04] border-[var(--border)]";
               return (
                 <div
                   key={tool.id}
                   onClick={() => handleSelect(tool)}
                   onMouseEnter={() => setSelectedIndex(idx)}
-                  className={`group flex items-center justify-between rounded-[12px] p-3 cursor-pointer transition-all ${
+                  className={`group flex items-center justify-between rounded-[var(--radius-md)] p-3 cursor-pointer transition-all ${
                     isSelected
-                      ? "bg-[#0071e3]/10 border border-[#0071e3]/30 shadow-2xs"
-                      : "border border-transparent hover:bg-black/[0.03]"
+                      ? "bg-white/[0.08] border border-white/20"
+                      : "border border-transparent hover:bg-white/[0.04]"
                   }`}
                 >
                   <div className="flex items-center space-x-3 min-w-0">
-                    <div className={`flex h-9 w-9 items-center justify-center rounded-[10px] border ${chipBg} shrink-0 shadow-2xs`}>
+                    <div className={`flex h-9 w-9 items-center justify-center rounded-[var(--radius-sm)] border ${chipBg} shrink-0 text-white`}>
                       {CATEGORY_ICONS[tool.category]}
                     </div>
                     <div className="min-w-0 truncate">
                       <div className="flex items-center space-x-2">
-                        <span className="font-semibold text-sm text-[#1d1d1f] group-hover:text-[#0071e3] transition-colors">
+                        <span className="font-semibold text-sm text-[var(--foreground)] group-hover:text-white transition-colors">
                           {tool.name}
                         </span>
                         {tool.popular && (
@@ -138,12 +138,12 @@ export function CommandPalette({
                           <Badge variant="success">New</Badge>
                         )}
                       </div>
-                      <p className="text-xs text-[#6e6e73] truncate mt-0.5">
+                      <p className="text-xs text-[var(--muted-foreground)] truncate mt-0.5">
                         {tool.description}
                       </p>
                     </div>
                   </div>
-                  <ArrowRight className="h-4 w-4 text-[#86868b] group-hover:text-[#0071e3] group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
+                  <ArrowRight className="h-4 w-4 text-[var(--subtle-foreground)] group-hover:text-white group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
                 </div>
               );
             })
@@ -151,25 +151,25 @@ export function CommandPalette({
         </div>
 
         {/* Keyboard hints footer */}
-        <div className="flex items-center justify-between border-t border-black/10 pt-3 text-xs text-[#86868b]">
+        <div className="flex items-center justify-between border-t border-[var(--border)] pt-3 text-xs text-[var(--muted-foreground)]">
           <div className="flex items-center space-x-3">
             <span>
-              <kbd className="rounded border border-black/10 bg-[#f5f5f7] px-1.5 py-0.5 font-mono text-[10px] shadow-2xs">
+              <kbd className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-white/[0.04] px-1.5 py-0.5 font-mono text-[10px]">
                 ↑
               </kbd>{" "}
-              <kbd className="rounded border border-black/10 bg-[#f5f5f7] px-1.5 py-0.5 font-mono text-[10px] shadow-2xs">
+              <kbd className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-white/[0.04] px-1.5 py-0.5 font-mono text-[10px]">
                 ↓
               </kbd>{" "}
               Navigate
             </span>
             <span>
-              <kbd className="rounded border border-black/10 bg-[#f5f5f7] px-1.5 py-0.5 font-mono text-[10px] shadow-2xs">
+              <kbd className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-white/[0.04] px-1.5 py-0.5 font-mono text-[10px]">
                 ↵
               </kbd>{" "}
               Open
             </span>
           </div>
-          <span>{filteredTools.length} tools available</span>
+          <span className="font-mono text-[11px]">{filteredTools.length} tools available</span>
         </div>
       </div>
     </Dialog>

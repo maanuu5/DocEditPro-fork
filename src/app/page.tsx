@@ -11,6 +11,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CATEGORIES, TOOLS } from "@/lib/tools-data";
 import { ToolCard } from "@/components/home/ToolCard";
+import RibbonGlow from "@/components/ui/ribbon-glow";
 
 export default function HomePage() {
   const [selectedCategory, setSelectedCategory] = React.useState<string>("all");
@@ -34,47 +35,84 @@ export default function HomePage() {
 
       <main className="flex-1 space-y-16 pb-24">
         {/* =========================================================================
-            1. HERO SECTION (Vercel & Apple Minimalist Display)
+            1. HERO — RibbonGlow WebGL2 background
             ========================================================================= */}
-        <section className="mx-auto max-w-[1200px] px-6 lg:px-8 pt-16 sm:pt-20 text-center">
-          <div className="max-w-[760px] mx-auto space-y-6">
-            {/* Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[6px] bg-white/[0.04] border border-[var(--border)] text-xs font-mono text-[var(--muted-foreground)]">
-              <span className="h-1.5 w-1.5 rounded-full bg-white" />
-              <span>100% Client-Side Privacy</span>
-              <span className="text-[var(--subtle-foreground)]">·</span>
-              <span className="text-[var(--foreground)]">Zero Server Uploads</span>
-            </div>
+        <section className="relative w-full overflow-hidden" style={{ minHeight: "640px" }}>
+          {/* RibbonGlow fills the hero — trackPointer runs at window level so
+              content overlaid above it still receives cursor events correctly */}
+          <div className="absolute inset-0 opacity-75">
+            <RibbonGlow
+              background="#000000"
+              color1="#e8864a"
+              color2="#c0405a"
+              speed={42}
+              size={108}
+              angle={-180}
+              hover={110}
+              reach={280}
+              style={{ minWidth: 0, minHeight: 0, position: "absolute", inset: 0 }}
+            />
+            {/* Subtle center-radial dimming vignette to ensure text readability */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background:
+                  "radial-gradient(ellipse 65% 55% at 50% 45%, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.1) 70%, transparent 100%)",
+              }}
+            />
+            {/* Bottom gradient — ribbon fades into site background */}
+            <div
+              className="absolute inset-x-0 bottom-0 h-64 pointer-events-none"
+              style={{ background: "linear-gradient(to bottom, transparent, #000000)" }}
+            />
+            {/* Top gradient — blends behind header */}
+            <div
+              className="absolute inset-x-0 top-0 h-28 pointer-events-none"
+              style={{ background: "linear-gradient(to top, transparent, #000000)" }}
+            />
+          </div>
 
-            {/* Display Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-[var(--foreground)] leading-[1.1]">
-              Every PDF Tool You Need. <br />
-              <span className="text-[var(--muted-foreground)]">
-                Private. Local. Document-Native.
-              </span>
-            </h1>
+          {/* Hero content */}
+          <div className="relative z-10 mx-auto max-w-[1200px] px-6 lg:px-8 pt-24 pb-36 sm:pt-28 text-center">
+            <div className="max-w-[760px] mx-auto space-y-6">
+              {/* Pill Badge */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono text-zinc-300 backdrop-blur-md">
+                <span className="h-1.5 w-1.5 rounded-full bg-white/70" />
+                <span>Runs entirely in browser</span>
+                <span className="text-white/25">·</span>
+                <span className="text-white font-medium">Zero server uploads</span>
+              </div>
 
-            {/* Subtitle */}
-            <p className="text-[15px] sm:text-base text-[var(--muted-foreground)] leading-relaxed max-w-[65ch] mx-auto">
-              DocEditPro provides 44 powerful document utilities running entirely inside your browser via WebAssembly. Edit text, merge, compress, OCR, and encrypt with zero server file transfers.
-            </p>
+              {/* Display Headline */}
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-white leading-[1.1]">
+                Every PDF tool you need. <br />
+                <span className="bg-gradient-to-b from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent font-normal">
+                  Private, fast and entirely in your browser.
+                </span>
+              </h1>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-              <Link
-                href="/pdf-editor"
-                className="h-11 px-6 rounded-[8px] bg-white hover:bg-[#ededed] text-black text-sm font-semibold inline-flex items-center gap-2 transition-colors shadow-sm"
-              >
-                <PenTool className="h-4 w-4 text-black" />
-                <span>Launch PDF Editor</span>
-                <ArrowRight className="h-4 w-4 text-black" />
-              </Link>
-              <a
-                href="#all-tools"
-                className="h-11 px-5 rounded-[8px] bg-transparent hover:bg-[var(--surface-hover)] border border-[var(--border)] hover:border-[var(--border-hover)] text-[var(--foreground)] text-sm font-medium inline-flex items-center gap-2 transition-colors"
-              >
-                <span>Browse 44 Tools</span>
-              </a>
+              {/* Subtitle */}
+              <p className="text-[15px] sm:text-base text-zinc-300/80 leading-relaxed max-w-[65ch] mx-auto font-normal">
+                DocEditPro provides 44 document utilities running locally via WebAssembly. Edit, merge, compress, convert and sign with zero file transfers.
+              </p>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+                <Link
+                  href="/pdf-editor"
+                  className="h-11 px-6 rounded-[8px] bg-white hover:bg-zinc-200 text-black text-sm font-semibold inline-flex items-center gap-2 transition-colors shadow-sm"
+                >
+                  <PenTool className="h-4 w-4 text-black" />
+                  <span>Launch PDF Editor</span>
+                  <ArrowRight className="h-4 w-4 text-black" />
+                </Link>
+                <a
+                  href="#all-tools"
+                  className="h-11 px-5 rounded-[8px] bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 hover:border-white/20 text-white text-sm font-medium inline-flex items-center gap-2 transition-all backdrop-blur-md"
+                >
+                  <span>Browse 44 Tools</span>
+                </a>
+              </div>
             </div>
           </div>
         </section>
